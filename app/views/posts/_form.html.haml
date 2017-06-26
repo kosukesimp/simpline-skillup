@@ -6,13 +6,13 @@
         - @post.errors.full_messages.each do |message|
           %li= message
 
-  = f.nested_fields_for :videos , @post do |video|
+  = f.nested_fields_for :videos,  @post do |video|
     = video.label :example,"例文", class: "control-label"
     = video.text_field :example, class: "form-control"
     = video.label :sugested,"模範解答", class: "control-label"
     = video.text_field :sugested, class: "form-control"
     = video.label :answer,"回答:回答者が記入します",class: "control-label"
     = video.text_field :answer, class: "form-control"
-  = f.add_nested_fields_link :videos, 'Add new', class: 'btn btn-primary', role: 'button'
-  
+  = f.add_nested_fields_link :videos, '問題を増やす', class: 'btn btn-primary', role: 'button'
+
   = f.submit "問題を登録する",class: "btn btn-success"

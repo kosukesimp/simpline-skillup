@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623022704) do
+ActiveRecord::Schema.define(version: 20170626005823) do
+
+  create_table "answers", force: :cascade do |t|
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.text "example"
@@ -40,6 +46,8 @@ ActiveRecord::Schema.define(version: 20170623022704) do
   create_table "videos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "post_id"
+    t.index ["post_id"], name: "index_videos_on_post_id"
   end
 
 end

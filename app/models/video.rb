@@ -2,7 +2,7 @@
 #
 # Total name: videos
 #
-# example  :text  not null 
+# example  :text  not null
 #
 
 
