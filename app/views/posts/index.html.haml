@@ -3,19 +3,11 @@
 %table
   %thead
     %tr
-      %th Example
-      %th Sugested
-      %th Answer
-      %th
-      %th
-      %th
-
+    %th Post
   %tbody
     - @posts.each do |post|
       %tr
-        %td= post.example
-        %td= post.sugested
-        %td= post.answer
+        %td= post.id
         %td= link_to 'Show', post
         %td= link_to 'Edit', edit_post_path(post)
         %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div>
+    <%= form_for @answer do |f| %>
+      <% @post.videos.each do |video| %>
+        <div>
+        <%= video.example %> 
+          <%= f.fields_for :answers do |answer| %>
+            <%= answer.hidden_field :question, :value => video.id %>
+            <%= answer.text_field :answer, class: "form-control", placeholder: "回答者が記入します"%>
+          <% end %>
+        </div>
+      <% end %>
+      <br>
+      <%= f.submit "採点", class:"btn btn-success center-block" %>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,4 @@
-class AnswersController < ApplicationController
-  before_action :set_answer, only: [:show, :edit, :update, :destroy]
+class AnswersController < ApplicationController 
 
   # GET /answers
   # GET /answers.json
@@ -10,13 +9,13 @@ class AnswersController < ApplicationController
   # GET /answers/1
   # GET /answers/1.json
   def show
+    @post =Post.find(params[:id])
   end
 
   # GET /answers/new
   def new
     @answer = Answer.new
-    @post = Post.select("example")
-
+    @post = Post.find_by(params[:id])
   end
 
   # GET /answers/1/edit
@@ -28,14 +27,8 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
 
-    respond_to do |format|
-      if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-        format.json { render :show, status: :created, location: @answer }
-      else
-        format.html { render :new }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
+    if @answer.save
+      redirect_to '/posts'
     end
   end
 
@@ -64,13 +57,8 @@ class AnswersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_answer
-      @answer = Answer.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:answer)
+      params.require(:answer).permit(answers_attributes: [:question, :correct_answer, :quiz, :answer_id, :id])
     end
 end

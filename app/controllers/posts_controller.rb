@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
-  def show
+  def show 
   end
 
   # GET /posts/new
@@ -76,6 +76,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:example, :sugested, :answer, video_attributes: [:example, :sugested, :answer, :post_id, :id])
+      params.require(:post).permit(:example, :sugested, :answer, videos_attributes: [:example, :sugested, :answer, :post_id, :id])
     end
 end
